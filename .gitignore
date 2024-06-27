@@ -159,3 +159,4 @@ dmypy.json
 #.idea/
 logs/
 Data/*
+artifact/*

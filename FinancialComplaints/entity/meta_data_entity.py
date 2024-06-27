@@ -14,15 +14,26 @@ class DataIngestionMetadataInfo:
     data_file_path :str 
 
 
+    def to_dict(self):
+        return {
+            'from_date': self.from_date,
+            'to_date': self.to_date,
+            'data_file_path': self.data_file_path
+        }
+
+
 class DataIngestionMetadata:
     def __init__(self ,metadata_file_path):
         self.metadata_file_path = metadata_file_path
+    
+
+    
 
     @property 
     def is_metadata_file_present(self)->bool:
         return os.path.exists(self.metadata_file_path)
     
-    def get_metadata_info(self)->DataIngestionMetadataInfo:
+    def write_metadata_info(self ,from_date ,to_date ,data_file_path)->DataIngestionMetadataInfo:
         try:
             metadata_info = DataIngestionMetadataInfo(
                 from_date= from_date ,
@@ -30,7 +41,23 @@ class DataIngestionMetadata:
                 data_file_path= data_file_path
             )
 
-            write_yaml(file_path=self.metadata_file_path ,data=metadata_info.)
+            
 
+         
+            metadata_dict = metadata_info.to_dict()
+
+            write_yaml(file_path=self.metadata_file_path ,data=metadata_dict)
+
+        except Exception as e:
+            raise CustomException(e ,sys)
+        
+    def get_metadata_info(self)->DataIngestionMetadataInfo:
+        try:
+            if not self.is_metadata_file_present:
+                raise Exception('No meta Data file is available')
+            metadata = read_yaml(self.metadata_file_path)
+            metedata_info = DataIngestionMetadataInfo(**(metadata))
+            logging.info(metadata)
+            return metedata_info
         except Exception as e:
             raise CustomException(e ,sys)

@@ -1,0 +1,46 @@
+columns :
+   product  : object
+   complaint_what_happened : object
+   date_sent_to_company : object
+   issue : object
+   sub_product : object
+   zip_code : object
+   tags : object
+   complaint_id : int64
+   timely : object
+   consumer_consent_provided : object
+   company_response : object
+   submitted_via : object
+   company : object
+   date_received : object
+   state : object
+   company_public_response : object
+   sub_issue : object
+
+target_columns : 
+  consumer_disputed : float64
+
+numerical_colum : 
+  consumer_disputed
+  complaint_id
+
+
+categorical_columns: 
+  product
+  complaint_what_happened
+  date_sent_to_company
+  issue
+  sub_product
+  zip_code
+  tags
+  timely
+  consumer_consent_provided
+  company_response
+  submitted_via
+  company
+  date_received
+  state
+  company_public_response
+  sub_issue
+
+

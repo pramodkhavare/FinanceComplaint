@@ -1,0 +1,34 @@
+
+
+training_pipeline_config :
+  artifact_dir : artifact
+
+data_ingestion_config :
+  data_ingestion_dir_name : 'data_ingestion'
+  data_ingestion_downloaded_data_dir_name: 'downloaded_files'
+  data_ingestion_file_name : 'finance_complaint.csv'
+  data_ingestion_feature_store_dir_name : 'feature_store'
+  data_ingestion_failed_dir_name : 'failed_downloaded_files'
+  data_ingestion_metadata_file_name : 'meta_info.yaml' 
+  data_ingestion_min_start_date : '2019-01-01'
+  data_ingestion_data_store_url : https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/?date_received_max=<todate>&date_received_min=<fromdate>&field=all&format=json
+  data_ingestion_from_date : "2021-01-01"
+  data_ingestion_to_date : "2021-02-01" 
+
+data_validation_config : 
+  data_validation_dir_name : 'data_validation'
+  data_validation_folder_name : 'finance_complaint'
+  data_validation_accepted_data_dir : 'accepted_data'
+  data_validation_rejected_data_dir : 'rejected_data'
+  data_validation_file_name : 'data.csv'
+
+
+data_transformation_config : 
+  add_date_column : True 
+  transformed_dir : transformed_dir 
+  preprocessing_dir : preprocessed_obj 
+  preprocessing_object_file_name : preprocessor.pkl 
+  transformed_data_dir : data 
+  transformed_data_file : data.csv
+  
+
