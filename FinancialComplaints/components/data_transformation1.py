@@ -6,11 +6,9 @@ from FinancialComplaints.config.configuration import DataIngestionConfig
 from FinancialComplaints.entity.artifacts_entity import DataIngestionArtifact ,DataValidationArtifacts ,DataTransformationArtifacts
 from FinancialComplaints.entity.meta_data_entity import DataIngestionMetadata 
 from FinancialComplaints.entity.config_entity import DataTransformationConfig
-# from FinancialComplaints.config.spark_manager import spark_session
 import os,sys ,json ,re 
 from time import time
 import pandas as pd
-import requests
 from sklearn.base import BaseEstimator,TransformerMixin 
 from FinancialComplaints.utils.utils import read_yaml ,write_yaml
 from sklearn.compose import ColumnTransformer
@@ -105,7 +103,7 @@ class DataTransformation():
             one_hot_pipeline = Pipeline(
                 steps=[
                     ('impute' ,SimpleImputer(strategy='most_frequent')) ,
-                    ('feature_generator' ,FeatureGenerator()) 
+                    ('feature_generator' ,FeatureGenerator()) ,
                     ('onehotencode' ,OneHotEncoder()) 
                     ]
                    )

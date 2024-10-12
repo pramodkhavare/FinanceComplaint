@@ -27,8 +27,7 @@ from FinancialComplaints.constant import *
 def write_yaml(file_path, data):
         try:
             os.makedirs(os.path.dirname(file_path) ,exist_ok=True)
-            print("***********")
-            print(data)
+
             with open(file_path, 'w') as yaml_file:
                 if data is not None:
                      yaml.dump(data ,yaml_file)

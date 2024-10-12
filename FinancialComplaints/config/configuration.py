@@ -50,7 +50,7 @@ class Configuration():
                 config[DATA_INGESTION_DIR_NAME_KEY]
             )
 
-            metadata_file_path = os.path.join(data_ingestion_dir_key ,config[DATA_INGESTION_METADATA_FILE_NAME_KEY])
+            metadata_file_path = os.path.join(data_ingestion_dir_key ,config[DATA_INGESTION_METADATA_FILE_NAME_KEY])  #'meta_info.yaml' 
 
             data_ingestion_metadata = DataIngestionMetadata(metadata_file_path= metadata_file_path)
 

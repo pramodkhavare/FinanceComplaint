@@ -52,11 +52,18 @@ class Pipeline():
         except Exception as e:
             raise CustomException(e,sys) from e
         
-    def start_data_transformation(self):
+    def start_data_transformation(self ,data_ingestion_artifacts : DataIngestionArtifact , data_validation_artifacts:DataValidationArtifacts):
         try:
-            DataTransformation(
-                
-            ) 
+            data_transformation_config = self.config.get_data_transformation()
+            data_ingestion_artifacts = data_ingestion_artifacts 
+            data_validation_artifacts = data_validation_artifacts
+            data_transformation = DataTransformation(
+                data_transformation_config= data_transformation_config,
+                data_ingestion_artifacts= data_ingestion_artifacts,
+                data_validation_artifacts= data_validation_artifacts
+            )
+            data_transformation_artifacts =data_transformation.initiate_data_transformation()
+            return data_transformation_artifacts
         except Exception as e:
             raise CustomException(e,sys) from e
     def run_pipeline(self):
@@ -64,9 +71,7 @@ class Pipeline():
             pipeline = Pipeline()
             data_ingestion_artifacts = pipeline.start_data_ingestion()
             data_validation_artifacts = pipeline.start_data_validation(data_ingestion_artifacts=data_ingestion_artifacts)
-
-
-
+            # data_transformation_artifacts = pipeline.start_data_transformation(data_ingestion_artifacts=data_ingestion_artifacts ,data_validation_artifacts=data_validation_artifacts)
         except Exception as e:
             raise CustomException(e,sys) from e
         

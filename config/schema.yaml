@@ -16,13 +16,37 @@ columns :
    state : object
    company_public_response : object
    sub_issue : object
+   consumer_disputed : float64
+
+input_columns :
+   product
+   complaint_what_happened 
+   date_sent_to_company 
+   issue
+   sub_product 
+   zip_code 
+   tags 
+   complaint_id 
+   timely 
+   consumer_consent_provided 
+   company_response 
+   submitted_via 
+   company 
+   date_received 
+   state 
+   company_public_response 
+   sub_issue
 
 target_columns : 
-  consumer_disputed : float64
+  consumer_disputed 
+
+
+
 
 numerical_colum : 
   consumer_disputed
   complaint_id
+
 
 
 categorical_columns: 
@@ -43,4 +67,27 @@ categorical_columns:
   company_public_response
   sub_issue
 
+
+unwanted_column :
+  complaint_id
+  zip_code
+  sub_product
+  tags 
+  sub_issue
+
+
+wanted_column : 
+   product 
+   complaint_what_happened 
+   date_sent_to_company 
+   issue 
+   sub_product
+   timely 
+   consumer_consent_provided
+   company_response 
+   submitted_via 
+   company 
+   date_received 
+   state 
+   company_public_response 
 

@@ -9,7 +9,9 @@ from FinancialComplaints.entity.meta_data_entity import DataIngestionMetadata
 import os,sys ,json ,re 
 from time import time
 import pandas as pd
-import requests
+import requests 
+
+
 @dataclass(frozen=True)
 class DownloadUrl:
     url :str 
